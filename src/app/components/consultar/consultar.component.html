@@ -1,0 +1,51 @@
+<div class="container mt-4">
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-6 offset-lg-3">
+            <h3> <strong>
+                Consulta de estudiantes
+            </strong> </h3>
+            <table class="table" *ngIf="listEstudiantes !== null">
+                <thead>
+                    <th>Identificacion</th>
+                    <th>Nombre</th>
+                    <th>Nota 1</th>
+                    <th>Nota 2</th>
+                    <th>Nota 3</th>
+                    <th>Promedio</th>
+                    <th>Estado</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let estudiante of listEstudiantes" [ngSwitch]="estudiante.estado">
+                        <td>{{ estudiante.identificacion }}</td>
+                        <td>{{ estudiante.nombre }}</td>
+                        <td>{{ estudiante.nota1 }}</td>
+                        <td>{{ estudiante.nota2 }}</td>
+                        <td>{{ estudiante.nota3 }}</td>
+                        <td>
+                            {{ estudiante.promedio }}
+                        </td>
+                        <td>
+                            <span *ngSwitchCase="'Aprobado'" class="badge badge-success">
+                                {{ estudiante.estado }}
+                            </span>
+                            <span *ngSwitchCase="'Reprobado'" class="badge badge-danger">
+                                {{ estudiante.estado }}
+                            </span>
+                            <span *ngSwitchCase="'Excluido'" class="badge badge-warning">
+                                {{ estudiante.estado }}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngFor="let estudiante of listEstudiantes; let IsLast = last">
+                <span *ngIf="IsLast"><strong>Ultimo registro:</strong> Nombre: {{estudiante.nombre}} Identificacion: {{ estudiante.identificacion }}</span>
+            </div>
+            <h3 *ngIf="listEstudiantes === null">No hay registros para mostrar, por favor registra datos</h3>
+            <div class="form-group">
+                <br>
+                <button class="btn btn-primary btn-register" routerLink="/registrar">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>

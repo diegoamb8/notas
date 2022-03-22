@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h3 {
+    font-family: 'Rowdies', 'cursive';
+    color: #ee4e08;
+}
+
+.btn-register {
+    background-color: #ee4e08;
+    border-color: #ee4e08;
+}

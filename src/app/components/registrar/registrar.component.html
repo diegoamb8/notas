@@ -1,0 +1,53 @@
+<div class="container ">
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center" style="padding: 20px;">
+                <h3>Registrar estudiantes</h3>
+                <br>
+                <form [formGroup]="register" (ngSubmit)=registrarEstudiante()>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Identificacion"
+                            formControlName="identificacion">
+                        <span class="text-danger ml-2"
+                            *ngIf="register.get('identificacion')?.hasError('required') && register.get('identificacion')?.touched">
+                            La identificacion <strong>es requerida</strong>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                        <span class="text-danger ml-2"
+                            *ngIf="register.get('nombre')?.hasError('required') && register.get('nombre')?.touched">
+                            El nombre <strong>es requerido</strong>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Nota 1" formControlName="nota1">
+                        <span class="text-danger ml-2"
+                            *ngIf="register.get('nota1')?.hasError('required') && register.get('nota1')?.touched">
+                            La nota 1 <strong>es requerida</strong>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Nota 2" formControlName="nota2">
+                        <span class="text-danger ml-2"
+                            *ngIf="register.get('nota2')?.hasError('required') && register.get('nota2')?.touched">
+                            La nota 2 <strong>es requerida</strong>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Nota 3" formControlName="nota3">
+                        <span class="text-danger ml-2"
+                            *ngIf="register.get('nota3')?.hasError('required') && register.get('nota3')?.touched">
+                            La nota 3 <strong>es requerida</strong>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary mr-2 btn-register" [disabled]="register.invalid"
+                            type="submit">Registrar</button>
+                        <button class="btn btn-success" routerLink="/consultar">Consultar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
