@@ -21,21 +21,21 @@
                         </span>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" placeholder="Nota 1" formControlName="nota1">
+                        <input type="number"  min="0" max="5" step="0.1" class="form-control" placeholder="Nota 1" formControlName="nota1">
                         <span class="text-danger ml-2"
                             *ngIf="register.get('nota1')?.hasError('required') && register.get('nota1')?.touched">
                             La nota 1 <strong>es requerida</strong>
                         </span>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" placeholder="Nota 2" formControlName="nota2">
+                        <input type="number"  min="0" max="5" step="0.1" class="form-control" placeholder="Nota 2" formControlName="nota2">
                         <span class="text-danger ml-2"
                             *ngIf="register.get('nota2')?.hasError('required') && register.get('nota2')?.touched">
                             La nota 2 <strong>es requerida</strong>
                         </span>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" placeholder="Nota 3" formControlName="nota3">
+                        <input type="number"  min="0" max="5" step="0.1" class="form-control" placeholder="Nota 3" formControlName="nota3">
                         <span class="text-danger ml-2"
                             *ngIf="register.get('nota3')?.hasError('required') && register.get('nota3')?.touched">
                             La nota 3 <strong>es requerida</strong>

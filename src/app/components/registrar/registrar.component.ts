@@ -8,10 +8,11 @@ import { Estudiante } from 'src/app/models/estudiante';
   styleUrls: ['./registrar.component.css']
 })
 export class RegistrarComponent implements OnInit {
-  
+
   register: FormGroup;
   promedio!: number;
   estado!: string;
+  encontro!: boolean;
 
   constructor(private fb: FormBuilder) {
     this.register = this.fb.group({
@@ -23,7 +24,7 @@ export class RegistrarComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   registrarEstudiante(): void {
 
@@ -56,12 +57,28 @@ export class RegistrarComponent implements OnInit {
     if (localStorage.getItem('estudiantes') === null) {
       listEstudiantes.push(estudiante);
       localStorage.setItem('estudiantes', JSON.stringify(listEstudiantes));
+      alert('Registrado');
       this.register.reset();
     } else {
       listEstudiantes = JSON.parse(localStorage.getItem('estudiantes')!);
-      listEstudiantes.push(estudiante);
-      localStorage.setItem('estudiantes', JSON.stringify(listEstudiantes));
-      this.register.reset();
+      this.encontro=false;
+      for (var i in listEstudiantes) {
+        if (estudiante.identificacion == listEstudiantes[i].identificacion) {
+            this.encontro=true;
+            break;
+        }
+      }
+      if (this.encontro==true) {
+        alert('No se puede registrar, identificacion ya registrada');
+        this.register.reset();
+      } else {
+        listEstudiantes.push(estudiante);
+        localStorage.setItem('estudiantes', JSON.stringify(listEstudiantes));
+        alert('Registrado');
+        this.register.reset();
+      }
+
+
     }
 
   }
